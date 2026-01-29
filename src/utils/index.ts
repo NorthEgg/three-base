@@ -10,15 +10,21 @@ export function addBVHExtension() {
   THREE.Mesh.prototype.raycast = acceleratedRaycast;
 }
 
-/**将鼠标位置归一化为设备坐标。x 和 y 方向的取值范围是 (-1 to +1)
+/**将鼠标位置归一化为设备坐标。x 、 y 、 z 方向的取值范围是 (-1 to +1)
+ *
+ * 获取坐标不包括NDC坐标的z轴。
+ *
+ * z轴获取参考方式：可通过三维空间中的位置转换到NDC空间获得一个z轴的值
+ *
  * @param mouseEvent 鼠标事件
- * @param width canvas宽度
- * @param height canvas高度
+ * @param canvasBounds canvas边界 Element.getBoundingClientRect()
  */
-export function getPointNDCPosition(mouseEvent: PointerEvent, width: number, height: number) {
+export function getPointNDCPosition(mouseEvent: PointerEvent, canvasBounds: DOMRect) {
+  // 不包括NDC坐标的z轴
+  // z轴获取参考方式：可通过三维空间中的位置转换到NDC空间获得一个z轴的值
   return new THREE.Vector2(
-    (mouseEvent.clientX / width) * 2 - 1,
-    -(mouseEvent.clientY / height) * 2 + 1,
+    ((mouseEvent.clientX - canvasBounds.left) / (canvasBounds.right - canvasBounds.left)) * 2 - 1,
+    -((mouseEvent.clientY - canvasBounds.top) / (canvasBounds.bottom - canvasBounds.top)) * 2 + 1,
   );
 }
 
