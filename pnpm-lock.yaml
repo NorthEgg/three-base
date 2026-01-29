@@ -11,6 +11,9 @@ importers:
       three:
         specifier: 0.182.0
         version: 0.182.0
+      three-custom-shader-material:
+        specifier: ^6.4.0
+        version: 6.4.0(three@0.182.0)
       three-mesh-bvh:
         specifier: 0.9.8
         version: 0.9.8(three@0.182.0)
@@ -462,6 +465,18 @@ packages:
     resolution: {integrity: sha512-UXWMKhLOwVKb728IUtQPXxfYU+usdybtUrK/8uGE8CQMvrhOpwvzDBwj0QhSL7MQc7vIsISBG8VQ8+IDQxpfQA==}
     engines: {node: '>=0.10.0'}
 
+  three-custom-shader-material@6.4.0:
+    resolution: {integrity: sha512-dIbkwX1P4DcHMOZrywW+/TDp5qJhlyU6NP/2kmHw91UqC+TrK4JSBtAV3qGc6UnkqSOmR1i0O+Yz5EnTp2aQ1g==}
+    peerDependencies:
+      '@react-three/fiber': '>=8.0'
+      react: '>=18.0'
+      three: '>=0.159'
+    peerDependenciesMeta:
+      '@react-three/fiber':
+        optional: true
+      react:
+        optional: true
+
   three-mesh-bvh@0.9.8:
     resolution: {integrity: sha512-YphYvdXEZSXdz6iNdWJo1RB6qvSCRyiXPEVSvNU6xVWbLDOdSrfEIsJOpgFOnefdmVEvZ6M+sY0cjh9gl7MvdA==}
     peerDependencies:
@@ -880,6 +895,10 @@ snapshots:
       fsevents: 2.3.3
 
   source-map-js@1.2.1: {}
+
+  three-custom-shader-material@6.4.0(three@0.182.0):
+    dependencies:
+      three: 0.182.0
 
   three-mesh-bvh@0.9.8(three@0.182.0):
     dependencies:

@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "three": "0.182.0",
+    "three-custom-shader-material": "^6.4.0",
     "three-mesh-bvh": "0.9.8",
     "vue": "3.5.27"
   },
