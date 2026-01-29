@@ -2,7 +2,6 @@ import * as THREE from "three";
 import { computeBoundsTree, disposeBoundsTree, acceleratedRaycast } from "three-mesh-bvh";
 import { TrackballControls } from "three/examples/jsm/controls/TrackballControls";
 import { CSS2DRenderer } from "three/examples/jsm/renderers/CSS2DRenderer";
-import { Ref } from "vue";
 
 /** 添加bvh */
 export function addBVHExtension() {
@@ -19,7 +18,7 @@ export function addBVHExtension() {
 export function getPointNDCPosition(mouseEvent: PointerEvent, width: number, height: number) {
   return new THREE.Vector2(
     (mouseEvent.clientX / width) * 2 - 1,
-    -(mouseEvent.clientY / height) * 2 + 1
+    -(mouseEvent.clientY / height) * 2 + 1,
   );
 }
 
@@ -49,7 +48,7 @@ export function initThree({
     (height * aspect) / 2, // 顶部界限
     (height * aspect) / -2, // 底部界限
     0.1, // 近裁剪面
-    100000 // 远裁剪面
+    100000, // 远裁剪面
   );
   camera.position.set(30, 30, 30);
   camera.lookAt(0, 0, 0);
@@ -132,7 +131,7 @@ export function updateCamera(
   controls: TrackballControls,
   objects: THREE.Object3D[],
   width: number,
-  height: number
+  height: number,
 ) {
   const lockViewMeshBox = new THREE.Box3();
   objects.forEach((object) => {
