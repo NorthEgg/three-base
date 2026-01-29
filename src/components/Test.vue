@@ -42,7 +42,11 @@ function init() {
   labelRenderer = initReturn.labelRenderer;
   renderer = initReturn.renderer;
   scene = initReturn.scene;
+  // 初始化完毕触发主函数
+  main();
 }
+/** 主函数 */
+function main() {}
 </script>
 
 <style>
